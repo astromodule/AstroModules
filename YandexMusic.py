@@ -24,8 +24,8 @@ class YaMusicMod(loader.Module):
 
 	strings = {
 		"name": "YandexMusic",
-		"na": "😅 <b>А что искать то?</b>",
-		"searching": "<b>Поиск...</b>",
+		"na": "🚫 Вы <b>не указали</b>, что нужно <b>искать</b>",
+		"searching": "<b>🔄 Поиск..</b>",
 	}
 	
 	async def ymcmd(self, message):
@@ -40,7 +40,7 @@ class YaMusicMod(loader.Module):
 			music = await message.client.inline_query(bot, args) 
 			await message.delete() 
 			try:
-				await message.client.send_file(message.to_id, music[1].result.document, caption="<b>🎧 Возможно, это тот трек, который вы искали</b>", reply_to=utils.get_topic(message) if r else None)  
+				await message.client.send_file(message.to_id, music[1].result.document, caption="<b>🎧 Возможно, это тот трек, который Вы искали</b>", reply_to=utils.get_topic(message) if r else None)  
 			except:
-				await message.client.send_file(message.to_id, music[3].result.document, caption="<b>🎧 Возможно, это тот трек, который вы искали</b>", reply_to=utils.get_topic(message) if r else None) 
-		except: return await message.client.send_message(message.chat_id, f"<b>😔 Нам не удалось найти трек с названием <code>{args}</code><b>")
+				await message.client.send_file(message.to_id, music[3].result.document, caption="<b>🎧 Возможно, это тот трек, который Вы искали</b>", reply_to=utils.get_topic(message) if r else None) 
+		except: return await message.client.send_message(message.chat_id, f"😔 Нам <b>не удалось</b> найти <b>трек с названием</b> <code>{args}</code>")
