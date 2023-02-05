@@ -16,6 +16,7 @@ __version__ = (1, 1, 1)
 #             https://www.gnu.org/licenses/agpl-3.0.html                 
 #   
 # meta developer: @AstroModules
+# meta designer: @XizurK
 
 from .. import loader, utils
 
@@ -40,7 +41,7 @@ class YaMusicMod(loader.Module):
 			music = await message.client.inline_query(bot, args) 
 			await message.delete() 
 			try:
-				await message.client.send_file(message.to_id, music[1].result.document, caption="<b>🎧 Возможно, это тот трек, который Вы искали</b>", reply_to=utils.get_topic(message) if r else None)  
+				await message.client.send_file(message.to_id, music[1].result.document, caption="<b>🎧 Возможно</b>, это тот <b>трек</b>, который Вы <b>искали</b>", reply_to=utils.get_topic(message) if r else None)  
 			except:
-				await message.client.send_file(message.to_id, music[3].result.document, caption="<b>🎧 Возможно, это тот трек, который Вы искали</b>", reply_to=utils.get_topic(message) if r else None) 
+				await message.client.send_file(message.to_id, music[3].result.document, caption="<b>🎧 Возможно</b>, это тот <b>трек</b>, который Вы <b>искали</b>", reply_to=utils.get_topic(message) if r else None) 
 		except: return await message.client.send_message(message.chat_id, f"😔 Нам <b>не удалось</b> найти <b>трек с названием</b> <code>{args}</code>")
